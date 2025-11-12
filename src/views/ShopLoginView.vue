@@ -11,9 +11,15 @@
 </template>
 
 <script setup>
+/* ***************************
+  IMPORTS
+ *************************** */
 import {ref} from "vue";
 import {useShopStore} from "@/stores/shop.js";
 
+/* ***************************
+  STATE
+ *************************** */
 const login = ref('')
 const password = ref('')
 const shopStore = useShopStore()

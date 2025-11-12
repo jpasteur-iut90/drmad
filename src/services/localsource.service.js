@@ -11,7 +11,6 @@ import {v4 as uuidv4} from 'uuid'
 
 /**
  * Si le login et le mot de passe sont fournis, que le login correspond à un utilisateur existant,
- * Si le login et le mot de passe sont fournis, que le login correspond à un utilisateur existant,
  * shopLogin() renvoie un objet contenant uniquement l'id, le nom, le login, l'email
  * et un identifiant de session sous forme d'un uuid. Sinon, un texte d'erreur est renvoyé.
  * NB: pas de test du mot de passe dans cet exemple.
@@ -27,7 +26,7 @@ function shopLogin(data) {
   if (!user.session) {
     user.session = uuidv4()
   }
-
+  // retourne uniquement les champs nécessaires
   let u = {
     _id: user._id,
     name: user.name,
@@ -38,6 +37,10 @@ function shopLogin(data) {
   return {error: 0, status: 200, data: u}
 }
 
+/**
+ * getAllViruses() renvoie un tableau d'items dont le format est le même que celui stockée en source locale (donc aussi en BdD côté API)
+ * @returns {{error: number, data}}
+ */
 function getAllViruses() {
   return {error: 0, data: items}
 }

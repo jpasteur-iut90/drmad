@@ -1,3 +1,8 @@
+<template>
+   <h1>Welcome to DrMad app</h1>
+    <router-view></router-view>
+</template>
+
 <script setup>
 import {onMounted} from "vue";
 import {useShopStore} from "@/stores/shop.js";
@@ -10,10 +15,4 @@ onMounted(() => {
 })
 </script>
 
-
-<template>
-   <h1>Welcome to DrMad app</h1>
-    <router-view></router-view>
-</template>
-
-
+<style scoped></style>

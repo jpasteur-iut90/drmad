@@ -7,15 +7,22 @@ export const useBankStore = defineStore('bank', () => {
 
   const accountAmount = ref(0)
   const accountTransactions = ref([])
+  const accountNumberState = ref(0)
+
+  function resetAccountNumberState() {
+    accountNumberState.value = 0
+  }
 
   async function getAccountAmount( number) {
     console.log('get account amount');
     let response = await BankAccountService.getAccountAmount(number)
     if (response.error === 0) {
       accountAmount.value = response.data
+      accountNumberState.value = 1
     }
     else {
       console.log(response.data)
+      accountNumberState.value = -1
     }
   }
 
@@ -24,11 +31,14 @@ export const useBankStore = defineStore('bank', () => {
     let response = await BankAccountService.getAccountTransactions(number)
     if (response.error === 0) {
       accountTransactions.value = response.data
+      accountNumberState.value = 1
     }
     else {
       console.log(response.data)
+      accountNumberState.value = -1
     }
   }
 
-  return { accountAmount, accountTransactions, getAccountAmount, getAccountTransactions }
+  return { accountAmount, accountTransactions, accountNumberState,
+    resetAccountNumberState, getAccountAmount, getAccountTransactions }
 })
